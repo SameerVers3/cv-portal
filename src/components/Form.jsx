@@ -38,6 +38,7 @@ const Form = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const company = queryParams.get('company');
+
     const post = queryParams.get('post');
 
     const [jobs, setJobs] = useState([]);
@@ -77,7 +78,7 @@ const Form = () => {
         email: "",
         github: "",
         linkedin: "",
-        job: "",
+        jobs: "",
         batch: 2021,
     }
 
@@ -107,7 +108,9 @@ const Form = () => {
     }
 
     const handlePost = async () => {
-    if (form.firstName == "" || form.lastName == "" || form.email == "" || form.github == "" || form.batch == "" || form.linkedin == "" || file == "" || form.job == "") {
+        console.log(form)
+        console.log(id)
+    if (form.firstName == "" || form.lastName == "" || form.email == "" || form.github == "" || form.batch == "" || form.linkedin == "" || file == "" || form.jobs == "") {
         alert("Please enter all fields");
         return;
     }
