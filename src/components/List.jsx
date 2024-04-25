@@ -1,20 +1,20 @@
 import react from "react"
-
-const Company =[
-        {
-        id: "something",
+import {Link} from "react-router-dom"
+const Company = [
+    {
+        id: "1",
         name: "Google",
         location: "USA",
 
     },
     {
-        id: "hello worn",
+        id: "2",
         name: "Facebook",
         location: "USA",
     }
 
 
-    ]
+]
 
 const List = () => {
     return (
@@ -22,10 +22,10 @@ const List = () => {
             {/* add somethign here */}
             {Company.map((company) => {
                 return (
-                    <a href={`\\job\\${company.id}`} key={company.id} className="border">
+                    <Link to={`\\job\\${company.id}`} key={company.id} className="border">
                         <h1>{company.name}</h1>
                         <h2>{company.location}</h2>
-                    </a>
+                    </Link>
                 )
             })}
         </div>

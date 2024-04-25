@@ -1,5 +1,5 @@
 import react, {useState} from "react"
-
+import { useParams } from "react-router-dom"
 import {
     CardTitle,
     CardDescription,
@@ -31,7 +31,8 @@ function UploadCloudIcon(props) {
 }
 
 const Form = () => {
-
+    const { id } = useParams();
+    // console.log(id)
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const company = queryParams.get('company');
@@ -152,7 +153,7 @@ const Form = () => {
                             <div className="relative h-44 md:h-72 overflow-hidden round-md">
                                 <img
                                     src={
-                                        file.type.startsWith('image/')
+                                        file.type === 'application/pdf'
                                             ? URL.createObjectURL(file)
                                             : ''
                                     }
@@ -176,7 +177,7 @@ const Form = () => {
                         )}
                     </CardContent>
                 </Card>
-            
+            <button type="submit">Upload</button>
         </div>
     )
 }
