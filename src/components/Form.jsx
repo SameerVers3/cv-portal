@@ -113,70 +113,183 @@ const Form = () => {
 
 
     return (
-        <div className="flex justify-center item-center flex-col">
-            <div>
-                <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" className="border " onChange={handleChange} />
-            </div>
+        // <div className="flex justify-center align-center mt-20">
+        // <div className="flex justify-center item-center flex-col gap-y-8">
+            
+        //     <div className="flex justify-evenly align-center">
+        //         <label htmlFor="firstName" className="text-2xl font-extrabold">First Name</label>
+        //         <input type="text" id="firstName" className="border" onChange={handleChange} placeholder="First Name"/>
+        //     </div>
 
-            <div>
-                <label htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" className="border" onChange={handleChange} />
-            </div>
+        //     <div className="flex justify-evenly align-center">
+        //         <label htmlFor="lastName" className="text-2xl font-extrabold">Last Name</label>
+        //         <input type="text" id="lastName" className="border rounded-full" onChange={handleChange} placeholder="Last Name"/>
+        //     </div>
 
-            <div>
-                <label htmlFor="email">Email</label>
-                <input type="text" id="email" className="border" onChange={handleChange} />
-            </div>
+        //     <div className="flex justify-evenly align-center">
+        //         <label htmlFor="email" className="text-2xl font-extrabold">Email</label>
+        //         <input type="text" id="email" className="border rounded-full" onChange={handleChange} placeholder="Email"/>
+        //     </div>
 
-            <div>
-                <label htmlFor="github">github</label>
-                <input type="text" id="github" className="border" onChange={handleChange} />
-            </div>
+        //     <div className="flex justify-evenly align-center">
+        //         <label htmlFor="github" className="text-2xl font-extrabold ">Github</label>
+        //         <input type="text" id="github" className="border rounded-full" onChange={handleChange} placeholder="Github"/>
+        //     </div>
 
-            <div>
-                <select name="batch" id="batch" onChange={handleChange}>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                </select>
-            </div>
+        //     <div className="flex justify-evenly align-center">
+        //         <select name="batch" id="batch" onChange={handleChange} className="">
+        //             <option value="2019">2019</option>
+        //             <option value="2020">2020</option>
+        //             <option value="2021">2021</option>
+        //             <option value="2022">2022</option>
+        //             <option value="2023">2023</option>
+        //         </select>
+        //     </div>
+        //     <div className="w-screen flex justify-center align-center relative">
+        //     <Card className="bg-gray-900 border-gray-700  md:w-4/6 m-5">
+        //         <CardHeader>
+        //             <CardTitle className="text-[#23B6DF] mx-auto mb-3">
+        //                 Upload Payment Receipt
+        //                 <span className="text-red-700">
+        //                     {error.file && ' *'}{' '}
+        //                 </span>
+        //             </CardTitle>
+        //             <CardDescription>
+        //                 Drag and drop your image or click the button below
+        //                 to select file.
+        //             </CardDescription>
+        //         </CardHeader>
+        //         <CardContent
+        //             {...getRootProps()}
+        //             className={`flex flex-col items-center justify-center border-2 m-1  ${isDragActive
+        //                     ? 'border-blue-500'
+        //                     : 'border-zinc-500 dark:border-zinc-800'
+        //                 } border-dashed rounded-lg space-y-3`}
+        //         >
+        //             <input {...getInputProps()} />
+
+        //             {isDragActive ? (
+        //                 <p className="text-blue-500">
+        //                     Drop the file here...
+        //                 </p>
+        //             ) : (
+        //                 <>
+        //                     <UploadCloudIcon className="w-16 h-16 text-zinc-500 dark:text-zinc-400 " />
+        //                     <p className="text-gray-500 ">
+        //                         Drag & drop image here, or click to
+        //                         select image
+        //                     </p>
+        //                 </>
+        //             )}
+
+        //             {file && file.type && file.name && (
+        //                 <div className="relative h-44 md:h-72 overflow-hidden round-md">
+        //                     <img
+        //                         src={
+        //                             file.type === 'application/pdf'
+        //                                 ? URL.createObjectURL(file)
+        //                                 : ''
+        //                         }
+        //                         alt={file.name}
+        //                         className="rounded-lg"
+        //                     />
+        //                     <div
+        //                         className="border absolute top-2 right-2 m-1 rounded-full p-2 z-1000"
+        //                         style={{ transition: 'background-color 0.3s ease' }}
+        //                         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#2e4f7cdb')}
+        //                         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+        //                         onClick={(e) => {
+        //                             e.stopPropagation()
+        //                             e.preventDefault()
+        //                             setFile(null)
+        //                         }}
+        //                     >
+        //                         <RxCross2 className="text-white text-xl" />
+        //                     </div>
+        //                 </div>
+        //             )}
+        //         </CardContent>
+        //     </Card>
+        //     </div>
+        //     <button type="submit" onClick={handlePost}>Upload</button>
 
 
-            <Card className="bg-gray-900 border-gray-700  md:w-4/6 m-5">
-                <CardHeader>
-                    <CardTitle className="text-[#23B6DF] mx-auto mb-3">
-                        Upload Payment Receipt
-                        <span className="text-red-700">
-                            {error.file && ' *'}{' '}
-                        </span>
-                    </CardTitle>
-                    <CardDescription>
-                        Drag and drop your image or click the button below
-                        to select file.
-                    </CardDescription>
-                </CardHeader>
-                <CardContent
+            
+
+
+
+
+        // </div>
+        // </div>
+
+        <div className="flex justify-center mt-20">
+    <div className="flex flex-col gap-y-8">
+        
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="firstName" className="text-2xl font-extrabold pl-2">First Name</label>
+            <input type="text" id="firstName" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="First Name" />
+        </div>
+
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="lastName" className="text-2xl font-extrabold pl-2">Last Name</label>
+            <input type="text" id="lastName" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="Last Name"/>
+        </div>
+
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="email" className="text-2xl font-extrabold pl-2">Email</label>
+            <input type="text" id="email" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="Email"/>
+        </div>
+
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="github" className="text-2xl font-extrabold pl-2">Github</label>
+            <input type="text" id="github" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="Github"/>
+        </div>
+
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="batch" className="text-2xl font-extrabold pl-2">Batch</label>
+            <select name="batch" id="batch" onChange={handleChange} className="border rounded-full pl-4 py-4">
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
+        </div>
+
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="batch" className="text-2xl font-extrabold pl-2">Available Position</label>
+            <select name="Available Position" id="Available_Position" onChange={handleChange} className="border rounded-full pl-4 py-4">
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
+        </div>
+        
+        <div className="w-screen ">
+            <div className="w-full flex justify-center ">
+            <div className=" md:w-4/6 m-5 |">
+                <div className="text-[#23B6DF] mx-auto mb-3">
+                    <h2 className="text-2xl font-extrabold">Upload Payment Receipt</h2>
+                    <span className="text-red-700">{error.file && ' *'}</span>
+                </div>
+                <div className="text-black-500 p-3">
+                    Drag and drop your image or click the button below to select file.
+                </div>
+                <div
                     {...getRootProps()}
-                    className={`flex flex-col items-center justify-center border-2 m-1  ${isDragActive
-                            ? 'border-blue-500'
-                            : 'border-zinc-500 dark:border-zinc-800'
-                        } border-dashed rounded-lg space-y-3`}
+                    className={`flex flex-col items-center justify-center border-2 m-1 ${isDragActive ? 'border-blue-500' : 'border-zinc-500 dark:border-zinc-800'} border-dashed rounded-lg space-y-3`}
                 >
                     <input {...getInputProps()} />
 
                     {isDragActive ? (
-                        <p className="text-blue-500">
-                            Drop the file here...
-                        </p>
+                        <p className="text-blue-500">Drop the file here...</p>
                     ) : (
                         <>
-                            <UploadCloudIcon className="w-16 h-16 text-zinc-500 dark:text-zinc-400 " />
-                            <p className="text-gray-500 ">
-                                Drag & drop image here, or click to
-                                select image
+                            <UploadCloudIcon className="w-16 h-16 text-zinc-500 dark:text-zinc-400" />
+                            <p className="text-gray-500">
+                                Drag & drop image here, or click to select image
                             </p>
                         </>
                     )}
@@ -185,9 +298,7 @@ const Form = () => {
                         <div className="relative h-44 md:h-72 overflow-hidden round-md">
                             <img
                                 src={
-                                    file.type === 'application/pdf'
-                                        ? URL.createObjectURL(file)
-                                        : ''
+                                    file.type === 'application/pdf' ? URL.createObjectURL(file) : ''
                                 }
                                 alt={file.name}
                                 className="rounded-lg"
@@ -198,26 +309,26 @@ const Form = () => {
                                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#2e4f7cdb')}
                                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
                                 onClick={(e) => {
-                                    e.stopPropagation()
-                                    e.preventDefault()
-                                    setFile(null)
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    setFile(null);
                                 }}
                             >
                                 <RxCross2 className="text-white text-xl" />
                             </div>
                         </div>
                     )}
-                </CardContent>
-            </Card>
-            <button type="submit" onClick={handlePost}>Upload</button>
-
-
-            
-
-
-
-
+                </div>
+            </div>
+            </div>
         </div>
+
+        <button type="submit" onClick={handlePost} className="w-full py-2 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600">
+            Upload
+        </button>
+    </div>
+</div>
+
     )
 }
 
