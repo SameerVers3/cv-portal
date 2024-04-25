@@ -116,7 +116,7 @@ const Form = () => {
         <div className="flex justify-center item-center flex-col">
             <div>
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" className="border" onChange={handleChange} />
+                <input type="text" id="firstName" className="border " onChange={handleChange} />
             </div>
 
             <div>
@@ -210,6 +210,13 @@ const Form = () => {
                 </CardContent>
             </Card>
             <button type="submit" onClick={handlePost}>Upload</button>
+
+
+            
+
+
+
+
         </div>
     )
 }
