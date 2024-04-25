@@ -44,7 +44,7 @@ const Form = () => {
 
     const fetchJobs = async () => {
         try {
-            const response = await fetch('http://localhost:5000/position', {
+            const response = await fetch('https://api.acmdevday.com/position', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -111,20 +111,8 @@ const Form = () => {
         alert("Please enter all fields");
         return;
     }
-
-    console.log({
-            firstName: form.firstName,	
-            lastName: form.lastName,
-            email: form.email,
-            github: form.github,
-            batch: form.batch,
-            position: post,
-            file: file,
-            company: "eocean"
-    })
-        
+        setLoading(true)
         try {
-            setLoading(true)
             const reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = async () => {
@@ -133,7 +121,7 @@ const Form = () => {
 
                 setLoading(true)
                 
-                const response = await fetch('http://localhost:5000/apply', {
+                const response = await fetch('https://api.acmdevday.com/apply', {
                     method: 'POST',
                     body: JSON.stringify({
                         firstName: form.firstName,	
@@ -141,9 +129,10 @@ const Form = () => {
                         email: form.email,
                         github: form.github,
                         batch: form.batch,
+                        linkedin: form.linkedin,
                         position: post,
                         file: base64,
-                        company: "eocean"
+                        company: id
                     }),
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
