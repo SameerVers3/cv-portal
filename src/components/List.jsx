@@ -11,6 +11,7 @@ const List = () => {
         try {
             const response = await fetch('https://api.acmdevday.com/getCompany', {
                 method: "get",
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 }

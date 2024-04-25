@@ -50,6 +50,7 @@ const Form = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                mode: 'no-cors',
                 body: JSON.stringify({ id: id })
             })
             const data = await response.json()
@@ -137,6 +138,7 @@ const Form = () => {
                         file: base64,
                         company: id
                     }),
+                    mode: 'no-cors',
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
                     }
