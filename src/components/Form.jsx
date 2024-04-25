@@ -1,4 +1,4 @@
-import react, { useState } from "react"
+import react, { useState, useEffect } from "react"
 import { useParams, useLocation } from "react-router-dom";
 import {
     CardTitle,
@@ -39,6 +39,29 @@ const Form = () => {
     const queryParams = new URLSearchParams(location.search);
     const company = queryParams.get('company');
     const post = queryParams.get('post');
+
+    const [jobs, setJobs] = useState([]);
+
+    const fetchJobs = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/position', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: id })
+            })
+            const data = await response.json()
+            console.log(data);
+            setJobs(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchJobs()
+    }, [])
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         accept: 'image/png, image/jpeg',
@@ -291,13 +314,11 @@ const Form = () => {
 
         <div className="flex flex-col gap-y-3">
             <label htmlFor="batch" className="text-2xl font-extrabold pl-2">Available Position</label>
-            <select name="Available Position" id="Available_Position" onChange={handleChange} className="border rounded-full pl-4 py-4">
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-            </select>
+                    <select name="Available Position" id="Available_Position" onChange={handleChange} className="border rounded-full pl-4 py-4">
+                        {jobs.map((job) => (
+                            <option value={job._id}>{job.title}</option>
+                        ))}
+                    </select>
         </div>
         </div>
 
