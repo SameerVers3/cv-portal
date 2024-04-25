@@ -253,9 +253,11 @@ const Form = () => {
         // </div>
         // </div>
 
-        <div className="flex justify-center mt-20">
-    <div className="flex flex-col gap-y-8">
-        
+        <div className="flex justify-center mt-20 bg-gradient-to-b from-[#FFFFFF] to-[#9BD7E6]">
+    <div className="flex flex-col gap-y-8  items-center justify-center">
+    <h1 className="font-bold text-7xl text-[#23B6DF] text-center">Developer's Day 2024</h1>
+    <h2 className="font-bold text-5xl text-[#23B6DF] text-center">CV Portal</h2>
+        <div className="flex flex-col gap-y-8 w-[80vw] ">
         <div className="flex flex-col gap-y-3">
             <label htmlFor="firstName" className="text-2xl font-extrabold pl-2">First Name</label>
             <input type="text" id="firstName" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="First Name" />
@@ -297,8 +299,11 @@ const Form = () => {
                 <option value="2023">2023</option>
             </select>
         </div>
-        
-        <div className="w-screen ">
+        </div>
+
+
+
+        <div className="w-screen">
             <div className="w-full flex justify-center ">
             <div className=" md:w-4/6 m-5 |">
                 <div className="text-[#23B6DF] mx-auto mb-3">
@@ -306,7 +311,7 @@ const Form = () => {
                     <span className="text-red-700">{error.file && ' *'}</span>
                 </div>
                 <div className="text-black-500 p-3">
-                    Drag and drop your image or click the button below to select file.
+                    Drag and drop your CV or click the button below to select file.
                 </div>
                 <div
                     {...getRootProps()}
@@ -320,7 +325,7 @@ const Form = () => {
                         <>
                             <UploadCloudIcon className="w-16 h-16 text-zinc-500 dark:text-zinc-400" />
                             <p className="text-gray-500">
-                                Drag & drop image here, or click to select image
+                                Drag & drop CV here
                             </p>
                         </>
                     )}
@@ -353,10 +358,11 @@ const Form = () => {
             </div>
             </div>
         </div>
-
+        <div className="w-[40vw] justify-center items-center">
         <button type="submit" onClick={handlePost} className="w-full py-2 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600">
             Upload
         </button>
+        </div>
     </div>
 </div>
 
