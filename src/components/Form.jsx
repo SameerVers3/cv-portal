@@ -1,4 +1,4 @@
-import react, {useState} from "react"
+import react, { useState } from "react"
 import { useParams } from "react-router-dom"
 import {
     CardTitle,
@@ -8,6 +8,8 @@ import {
     Card,
 } from './ui/card'
 import { useDropzone } from 'react-dropzone'
+
+
 
 function UploadCloudIcon(props) {
     return (
@@ -77,6 +79,17 @@ const Form = () => {
         console.log(form)
     }
 
+    const handlePost = async () => {
+        if (firstName == "" || lastName == "" || email == "" || github == "" || batch == 2021) {
+            alert("enter all fields");
+            return;
+        }
+
+
+        const response = await fetch("https://acm.acmdevday.com/apply", {
+            method: "POST"
+        })
+    }
 
 
     return (
@@ -111,73 +124,72 @@ const Form = () => {
                 </select>
             </div>
 
-            
+
             <Card className="bg-gray-900 border-gray-700  md:w-4/6 m-5">
-                    <CardHeader>
-                        <CardTitle className="text-[#23B6DF] mx-auto mb-3">
-                            Upload Payment Receipt
-                            <span className="text-red-700">
-                                {error.file && ' *'}{' '}
-                            </span>
-                        </CardTitle>
-                        <CardDescription>
-                            Drag and drop your image or click the button below
-                            to select file.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent
-                        {...getRootProps()}
-                        className={`flex flex-col items-center justify-center border-2 m-1  ${
-                            isDragActive
-                                ? 'border-blue-500'
-                                : 'border-zinc-500 dark:border-zinc-800'
+                <CardHeader>
+                    <CardTitle className="text-[#23B6DF] mx-auto mb-3">
+                        Upload Payment Receipt
+                        <span className="text-red-700">
+                            {error.file && ' *'}{' '}
+                        </span>
+                    </CardTitle>
+                    <CardDescription>
+                        Drag and drop your image or click the button below
+                        to select file.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent
+                    {...getRootProps()}
+                    className={`flex flex-col items-center justify-center border-2 m-1  ${isDragActive
+                            ? 'border-blue-500'
+                            : 'border-zinc-500 dark:border-zinc-800'
                         } border-dashed rounded-lg space-y-3`}
-                    >
-                        <input {...getInputProps()} />
+                >
+                    <input {...getInputProps()} />
 
-                        {isDragActive ? (
-                            <p className="text-blue-500">
-                                Drop the file here...
+                    {isDragActive ? (
+                        <p className="text-blue-500">
+                            Drop the file here...
+                        </p>
+                    ) : (
+                        <>
+                            <UploadCloudIcon className="w-16 h-16 text-zinc-500 dark:text-zinc-400 " />
+                            <p className="text-gray-500 ">
+                                Drag & drop image here, or click to
+                                select image
                             </p>
-                        ) : (
-                            <>
-                                <UploadCloudIcon className="w-16 h-16 text-zinc-500 dark:text-zinc-400 " />
-                                <p className="text-gray-500 ">
-                                    Drag & drop image here, or click to
-                                    select image
-                                </p>
-                            </>
-                        )}
+                        </>
+                    )}
 
-                        {file && file.type && file.name && (
-                            <div className="relative h-44 md:h-72 overflow-hidden round-md">
-                                <img
-                                    src={
-                                        file.type === 'application/pdf'
-                                            ? URL.createObjectURL(file)
-                                            : ''
-                                    }
-                                    alt={file.name}
-                                    className="rounded-lg"
-                                />
-                               <div
-                                    className="border absolute top-2 right-2 m-1 rounded-full p-2 z-1000"
-                                    style={{ transition: 'background-color 0.3s ease' }}
-                                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#2e4f7cdb')}
-                                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                        e.preventDefault()
-                                        setFile(null)
-                                    }}
-                                >
-                                    <RxCross2 className="text-white text-xl" />
-                                </div>
+                    {file && file.type && file.name && (
+                        <div className="relative h-44 md:h-72 overflow-hidden round-md">
+                            <img
+                                src={
+                                    file.type === 'application/pdf'
+                                        ? URL.createObjectURL(file)
+                                        : ''
+                                }
+                                alt={file.name}
+                                className="rounded-lg"
+                            />
+                            <div
+                                className="border absolute top-2 right-2 m-1 rounded-full p-2 z-1000"
+                                style={{ transition: 'background-color 0.3s ease' }}
+                                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#2e4f7cdb')}
+                                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    e.preventDefault()
+                                    setFile(null)
+                                }}
+                            >
+                                <RxCross2 className="text-white text-xl" />
                             </div>
-                        )}
-                    </CardContent>
-                </Card>
-            <button type="submit">Upload</button>
+                        </div>
+                    )}
+                </CardContent>
+            </Card>
+            <button type="submit" onClick={handlePost}>Upload</button>
         </div>
     )
 }
