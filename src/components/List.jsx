@@ -22,7 +22,7 @@ const List = () => {
             {/* add somethign here */}
             {Company.map((company) => {
                 return (
-                    <Link to={`\\job\\${company.id}`} key={company.id} className="border">
+                    <Link to={`/job/${company.id}`} key={company.id} className="border">
                         <h1>{company.name}</h1>
                         <h2>{company.location}</h2>
                     </Link>
