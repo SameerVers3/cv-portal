@@ -276,7 +276,7 @@ const Form = () => {
         // </div>
         // </div>
 
-        <div className="flex justify-center mt-20 bg-gradient-to-b from-[#FFFFFF] to-[#9BD7E6]">
+        <div className="flex justify-center mt-20 bg-gradient-to-b from-[#FFFFFF] to-[#9BD7E6] overflow-hidden">
     <div className="flex flex-col gap-y-8  items-center justify-center">
     <h1 className="font-bold text-7xl text-[#23B6DF] text-center">Developer's Day 2024</h1>
     <h2 className="font-bold text-5xl text-[#23B6DF] text-center">CV Portal</h2>
@@ -328,7 +328,7 @@ const Form = () => {
             <div className="w-full flex justify-center ">
             <div className=" md:w-4/6 m-5 |">
                 <div className="text-[#23B6DF] mx-auto mb-3">
-                    <h2 className="text-2xl font-extrabold">Upload Payment Receipt</h2>
+                    <h2 className="text-2xl font-extrabold">Upload Your CV</h2>
                     <span className="text-red-700">{error.file && ' *'}</span>
                 </div>
                 <div className="text-black-500 p-3">
@@ -379,10 +379,13 @@ const Form = () => {
             </div>
             </div>
         </div>
-        <div className="w-[40vw] justify-center items-center">
+        <div className="w-[40vw] justify-center items-center mb-12">
         <button type="submit" onClick={handlePost} className="w-full py-2 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600">
             Upload
         </button>
+        </div>
+        <div className="text-align pb-8 text-white text-xl font-semibold">
+            <p>Made by Owais Rafiq, Sameer Ahmed, Syed M.Fasih and Abdullah Azhar Khan</p>
         </div>
     </div>
 </div>
