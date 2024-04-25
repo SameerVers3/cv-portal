@@ -67,7 +67,7 @@ const Form = () => {
 
     const [form, setForm] = useState(formData)
     const [error, setError] = useState(errorData)
-
+    const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null);
 
     const handleChange = (e) => {
@@ -85,29 +85,60 @@ const Form = () => {
         return;
     }
 
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        body: JSON.stringify({
+    console.log({
             firstName: form.firstName,	
             lastName: form.lastName,
             email: form.email,
             github: form.github,
             batch: form.batch,
             position: post,
-            file: file
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            file: file,
+            company: "eocean"
+    })
+        
+        try {
+            setLoading(true)
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = async () => {
+                const base64Image = reader.result
+                const base64 = base64Image
+
+                setLoading(true)
+                
+                const response = await fetch('http://localhost:5000/apply', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        firstName: form.firstName,	
+                        lastName: form.lastName,
+                        email: form.email,
+                        github: form.github,
+                        batch: form.batch,
+                        position: post,
+                        file: base64,
+                        company: "eocean"
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    }
+                });
+
+                
+                const responseData = await response.json();
+                
+                if (responseData.success) {
+                    alert("Submitted Successfully");
+                }
+                else {
+                    alert("Error in submitting form, Please try again");
+                }
+            }
+        } catch (error) {
+            atert('Error is Submitting form, Please try again')
+        } finally {
+            setLoading(false)
         }
-    });
 
-    const responseData = await response.json();
-
-    if (responseData.success) {
-        alert("Success");
-    } else {
-        // Handle failure
-    }
 }
 
 
