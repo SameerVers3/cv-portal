@@ -1,5 +1,5 @@
 import react, { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom";
 import {
     CardTitle,
     CardDescription,
@@ -9,7 +9,7 @@ import {
 } from './ui/card'
 import { useDropzone } from 'react-dropzone'
 
-
+import { RxCross2 } from "react-icons/rx";
 
 function UploadCloudIcon(props) {
     return (
@@ -44,7 +44,7 @@ const Form = () => {
         accept: 'image/png, image/jpeg',
         maxFiles: 1,
         onDrop: (acceptedFiles) => {
-            setFiles(acceptedFiles[0])
+            setFile(acceptedFiles[0])
         },
     })
 
@@ -80,16 +80,36 @@ const Form = () => {
     }
 
     const handlePost = async () => {
-        if (firstName == "" || lastName == "" || email == "" || github == "" || batch == 2021) {
-            alert("enter all fields");
-            return;
-        }
-
-
-        const response = await fetch("https://acm.acmdevday.com/apply", {
-            method: "POST"
-        })
+    if (form.firstName == "" || form.lastName == "" || form.email == "" || form.github == "" || form.batch == "") {
+        alert("Please enter all fields");
+        return;
     }
+
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            firstName: form.firstName,	
+            lastName: form.lastName,
+            email: form.email,
+            github: form.github,
+            batch: form.batch,
+            position: post,
+            file: file
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    });
+
+    const responseData = await response.json();
+
+    if (responseData.success) {
+        alert("Success");
+    } else {
+        // Handle failure
+    }
+}
+
 
 
     return (
