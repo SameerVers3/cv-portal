@@ -53,7 +53,7 @@ const Form = () => {
             })
             const data = await response.json()
             console.log(data);
-            setJobs(data)
+            setJobs(data.jobs)
         } catch (error) {
             console.log(error)
         }
@@ -76,6 +76,8 @@ const Form = () => {
         lastName: "",
         email: "",
         github: "",
+        linkedin: "",
+        job: "",
         batch: 2021,
     }
 
@@ -84,7 +86,9 @@ const Form = () => {
         lastName: false,
         email: false,
         github: false,
+        linkedin: false,
         batch: false,
+        job: false,
         file: false
     }
 
@@ -103,7 +107,7 @@ const Form = () => {
     }
 
     const handlePost = async () => {
-    if (form.firstName == "" || form.lastName == "" || form.email == "" || form.github == "" || form.batch == "") {
+    if (form.firstName == "" || form.lastName == "" || form.email == "" || form.github == "" || form.batch == "" || form.linkedin == "" || file == "" || form.job == "") {
         alert("Please enter all fields");
         return;
     }
@@ -300,6 +304,11 @@ const Form = () => {
             <label htmlFor="github" className="text-2xl font-extrabold pl-2">Github</label>
             <input type="text" id="github" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="Github"/>
         </div>
+        
+        <div className="flex flex-col gap-y-3">
+            <label htmlFor="linkedin" className="text-2xl font-extrabold pl-2">LinkedIn</label>
+            <input type="text" id="linkedin" className="border rounded-full pl-4 py-4" onChange={handleChange} placeholder="LinkedIn"/>
+        </div>
 
         <div className="flex flex-col gap-y-3">
             <label htmlFor="batch" className="text-2xl font-extrabold pl-2">Batch</label>
@@ -313,10 +322,10 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col gap-y-3">
-            <label htmlFor="batch" className="text-2xl font-extrabold pl-2">Available Position</label>
-                    <select name="Available Position" id="Available_Position" onChange={handleChange} className="border rounded-full pl-4 py-4">
+            <label htmlFor="jobs" className="text-2xl font-extrabold pl-2">Available Position</label>
+                    <select name="jobs" id="jobs" onChange={handleChange} className="border rounded-full pl-4 py-4">
                         {jobs.map((job) => (
-                            <option value={job._id}>{job.title}</option>
+                            <option value={job}>{job}</option>
                         ))}
                     </select>
         </div>
